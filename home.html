@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Kalkulator Pengeluaran Harian</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+    .container {
+      max-width: 400px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>Kalkulator Pengeluaran Harian</h2>
+
+    <label for="uang">Total Uang (Rp)</label>
+    <input type="number" id="uang" placeholder="Contoh: 300000">
+
+    <label for="hari">Jumlah Hari</label>
+    <input type="number" id="hari" placeholder="Contoh: 7">
+
+    <button onclick="hitungPengeluaran()">Hitung</button>
+
+    <div class="result" id="hasil"></div>
+  </div>
+
+  <script>
+    function hitungPengeluaran() {
+      const uang = parseFloat(document.getElementById('uang').value);
+      const hari = parseInt(document.getElementById('hari').value);
+
+      if (isNaN(uang) || isNaN(hari) || uang <= 0 || hari <= 0) {
+        document.getElementById('hasil').innerText = 'Mohon masukkan angka yang valid.';
+        return;
+      }
+
+      const perHari = uang / hari;
+      const hasil = `Kamu bisa menghabiskan maksimal Rp${perHari.toFixed(0).toLocaleString()} per hari selama ${hari} hari.`;
+      document.getElementById('hasil').innerText = hasil;
+    }
+  </script>
+
+</body>
+</html>
